@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#myForm").submit(function(event) {
+                event.preventDefault();
+
+                var numero = parseInt($("#numPersonajes").val());
+                var tamnho = parseInt($("#tamPista").val());
+
+                if (numero >= 3 && numero <= 5 && tamnho >= 4 && tamnho <= 8) {
+                    $("#selectPersonaje").show();
+                    $(".invalid-feedback").hide();
+                } else {
+                    $(".invalid-feedback").show(500).delay(1000).hide(500);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container px-4 py-5">
+    <h1>Juegos de personajes movedizos</h1>
+    <form id="myForm" action="index.html" method="POST">
+        <div class="form-group">
+            <label for="numPersonajes">Ingrese el número de personajes:</label>
+            <input type="number" id="numPersonajes" class="form-control" placeholder="NumPersonajes" required min="1">
+        </div>
+        <div class="form-group">
+            <label for="tamPista">Ingrese el tamaño de la pista (m):</label>
+            <input type="number" id="tamPista" class="form-control" placeholder="TamPista" required min="1">
+        </div>
+        <button type="submit" value="Enviar" class="btn btn-primary">Ingresar Personajes</button>
+    </form>
+</div>
+<div id="selectPersonaje" style="display: none;">
+    <h2>Seleccionar personaje</h2>
+
+</div>
+<div class="invalid-feedback" style="display: none;">
+    Por favor, ingrese valores válidos.
+</div>
+</body>
+</html>
